@@ -34,7 +34,7 @@ public class Main {
                 fecha2DiasDesp, 0.05, marca1.getNombre()));
         tienda.setTarjetaPromocion(new TarjetaPromocion(true,
                 fecha2DiasAntes,
-                fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.nombre()));
+                fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()));
         Scanner lectura = new Scanner(System.in);
         System.out.println("----------Seleccionar tarjeta: ----------");
         int indice = 0;
