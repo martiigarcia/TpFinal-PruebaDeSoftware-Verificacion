@@ -1,11 +1,12 @@
-# ventasOnline-BD2...oodb
+# TRABAJO PRACTICO FINAL - VERIFICACION
 
-FUNCIONA SOLO CON OBJECT DB (no otras bases)
 
-Contiene: 
-- modelo
-- tests del modelo
-- servicios del modelo
-- javalin del proyecto
+García Martina - Gomez-Tolosa Nicolas
 
-(funcional)
+
+
+Pruebas del modelo del proyecto Ventas Online realizado para la materia Bases de DAtos 2
+
+Pruebas de software de caja blaca
+Pruebas de software de caja negra
+
