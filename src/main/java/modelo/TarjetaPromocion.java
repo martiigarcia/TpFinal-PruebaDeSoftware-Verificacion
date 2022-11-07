@@ -6,10 +6,6 @@ public class TarjetaPromocion extends Promocion {
 
     private String tarjeta;
 
-    public String getTarjeta() {
-        return tarjeta;
-    }
-
 
     public TarjetaPromocion(boolean estado, LocalDate fechaInicio, LocalDate fechaFin, double porcentaje, String tarjeta) throws RuntimeException {
         super(estado, fechaInicio, fechaFin, porcentaje);
@@ -29,10 +25,10 @@ public class TarjetaPromocion extends Promocion {
         return super.getDescuento();
     }
 
-    public String tarjeta() {
+
+    public String getTarjeta() {
         return tarjeta;
     }
-
     public void setTarjeta(String tarjeta) {
         this.tarjeta = tarjeta;
     }

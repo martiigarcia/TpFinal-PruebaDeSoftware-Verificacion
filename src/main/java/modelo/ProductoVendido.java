@@ -29,10 +29,6 @@ public class ProductoVendido {
         this.codigo = codigo;
     }
 
-    public String codigo() {
-        return codigo;
-    }
-
     @Override
     public String toString() {
         return "Producto Vendido{" +

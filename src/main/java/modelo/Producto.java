@@ -5,12 +5,12 @@ public class Producto {
 
     private String codigo;
     private String descripcion;
-    private Categoria categoria;
+    private String categoria;
     private double precio;
     private Marca marca;
 
 
-    public Producto(String codigo, double precio, String descripcion, Categoria categoria, Marca marca) throws RuntimeException {
+    public Producto(String codigo, double precio, String descripcion, String categoria, Marca marca) throws RuntimeException {
 
         if (esDatoVacio(codigo))
             throw new RuntimeException("El codigo debe ser valido");
@@ -33,6 +33,13 @@ public class Producto {
         this.marca = marca;
     }
 
+    private boolean esDatoVacio(String dato) {
+        return dato.equals("");
+    }
+
+    private boolean esDatoNulo(Object dato) {
+        return dato == null;
+    }
 
     public String getCodigo() {
         return codigo;
@@ -42,7 +49,7 @@ public class Producto {
         return descripcion;
     }
 
-    public Categoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
@@ -54,15 +61,6 @@ public class Producto {
         return marca;
     }
 
-    private boolean esDatoVacio(String dato) {
-        return dato.equals("");
-    }
-
-    private boolean esDatoNulo(Object dato) {
-        return dato == null;
-    }
-
-
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
@@ -71,7 +69,7 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -83,25 +81,6 @@ public class Producto {
         this.marca = marca;
     }
 
-    public String codigo() {
-        return codigo;
-    }
-
-    public String descripcion() {
-        return descripcion;
-    }
-
-    public Marca marca() {
-        return marca;
-    }
-
-    public Categoria categoria() {
-        return categoria;
-    }
-
-    public double precio() {
-        return precio;
-    }
 
     @Override
     public String toString() {

@@ -20,9 +20,8 @@ public class Main {
         cliente2.agregarTarjeta(tarjeta3);
         Marca marca1 = new Marca("Eco");
         Marca marca2 = new Marca("Frutiloqui");
-        Categoria categoria1 = new Categoria("frutas");
-        Producto producto1 = new Producto("1", 34, "manzana", categoria1, marca1);
-        Producto producto2 = new Producto("1", 6, "pera", categoria1, marca2);
+        Producto producto1 = new Producto("1", 34, "Manzana", "Fruta", marca1);
+        Producto producto2 = new Producto("1", 6, "Pera", "Fruta", marca2);
         Carrito carrito1 = new Carrito();
         Carrito carrito2 = new Carrito();
         carrito1.agregarProductoAlCarrito(producto1);

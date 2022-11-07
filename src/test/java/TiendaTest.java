@@ -14,7 +14,6 @@ public class TiendaTest {
     private Tarjeta tarjeta;
     private Carrito carrito;
     private Marca marcaAcme, marcaEco, marcaFrutiloqui;
-    private Categoria categoria, categoria2;
     private Producto producto1, producto2, producto3, producto4;
 
     private LocalDate  fecha2DiasAntes, fecha2DiasDesp;
@@ -33,13 +32,12 @@ public class TiendaTest {
         marcaEco = new Marca("Eco");
         marcaFrutiloqui = new Marca("Frutiloqui");
 
-        categoria = new Categoria("Cosmetico");
-        categoria2 = new Categoria("Fruta");
 
-        producto1 = new Producto("1", 100, "Labial", categoria, marcaAcme);
-        producto2 = new Producto("2", 34, "Manzana", categoria2, marcaEco);
-        producto3 = new Producto("3", 6, "Pera", categoria2, marcaFrutiloqui);
-        producto4 = new Producto("4", 100, "Rimel", categoria, marcaAcme);
+
+        producto1 = new Producto("1", 100, "Labial", "Cosmetico", marcaAcme);
+        producto2 = new Producto("2", 34, "Manzana", "Cosmetico", marcaEco);
+        producto3 = new Producto("3", 6, "Pera", "Fruta", marcaFrutiloqui);
+        producto4 = new Producto("4", 100, "Rimel", "Fruta", marcaAcme);
 
         carrito.agregarProductoAlCarrito(producto1);
         carrito.agregarProductoAlCarrito(producto2);

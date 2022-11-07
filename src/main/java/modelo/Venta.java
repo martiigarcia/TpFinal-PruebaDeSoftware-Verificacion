@@ -9,22 +9,16 @@ public class Venta {
 
     private double montoAbonado;
     private Cliente cliente;
-    private EstadoVenta estadoVenta;
     private Tarjeta tarjeta;
     private List<ProductoVendido> productosVendidos;
-    private String numeroVenta;
 
-    public Venta(Cliente cliente, Tarjeta tarjeta, EstadoVenta estadoVenta, List<Producto> productosVendidos, double montoAbonado) {
+
+    public Venta(Cliente cliente, Tarjeta tarjeta, List<Producto> productosVendidos, double montoAbonado) {
         this.cliente = cliente;
         this.tarjeta = tarjeta;
-        this.estadoVenta = estadoVenta;
         this.productosVendidos = new ArrayList<>();
         this.agregarProductos(productosVendidos);
         this.montoAbonado = montoAbonado;
-    }
-    public Venta(Cliente cliente, Tarjeta tarjeta, EstadoVenta estadoVenta, List<Producto> productosVendidos, double montoAbonado, String numeroVenta) {
-        this(cliente, tarjeta, estadoVenta, productosVendidos, montoAbonado);
-        this.numeroVenta = numeroVenta;
     }
 
 
@@ -36,13 +30,6 @@ public class Venta {
         this.cliente = cliente;
     }
 
-    public EstadoVenta getEstadoVenta() {
-        return estadoVenta;
-    }
-
-    public void setEstadoVenta(EstadoVenta estadoVenta) {
-        this.estadoVenta = estadoVenta;
-    }
 
     public Tarjeta getTarjeta() {
         return tarjeta;
@@ -68,20 +55,13 @@ public class Venta {
         this.montoAbonado = montoAbonado;
     }
 
-    public String getNumeroVenta() {
-        return numeroVenta;
-    }
-
-    public void setNumeroVenta(String numeroVenta) {
-        this.numeroVenta = numeroVenta;
-    }
 
 
 
     private void agregarProductos(List<Producto> productos) {
         productos.forEach(producto ->
                 this.productosVendidos.add(
-                        new ProductoVendido(producto.codigo(), producto.precio()
+                        new ProductoVendido(producto.getCodigo(), producto.getPrecio()
                         )));
 
     }

@@ -42,11 +42,11 @@ class ProductoTest {
     public static Object[] parametros() {
 
         return new Object[][]{
-        //(String codigo, double precio, String descripcion, Categoria categoria, Marca marca)
-                { "", 1, "descripcion", new Categoria("frutas"), new Marca("Frutiloqui")},    //sin descripcion
-                {"1", 1, "", new Categoria("frutas"), new Marca("Frutiloqui")},    //sin descripcion
-                {"1", 1, "descripcion", null, new Marca("Frutiloqui")},                   //sin categoria
-                {"1", 1, "descripcion", new Categoria("frutas"), null}                    //sin marca
+        //(String codigo, double precio, String descripcion, String categoria, Marca marca)
+                {"" , 1, "descripcion", "frutas",  new Marca("Frutiloqui")},    //sin descripcion
+                {"1", 1, ""            , "Frutas", new Marca("Frutiloqui")},    //sin descripcion
+                {"1", 1, "descripcion",   null  ,  new Marca("Frutiloqui")},                   //sin categoria
+                {"1", 1, "descripcion", "frutas",  null}                    //sin marca
 
                 //como se hace para hacer la prueba de q no tenga precio o codigo?
 
@@ -55,7 +55,7 @@ class ProductoTest {
 
     @ParameterizedTest
     @MethodSource("parametros")
-    void crearProducto(String codigo, double precio, String descripcion, Categoria categoria,  Marca marca) {
+    void crearProducto(String codigo, double precio, String descripcion, String categoria,  Marca marca) {
         assertThrows(RuntimeException.class, () -> new Producto(codigo, precio, descripcion, categoria,  marca));
     }
 

@@ -7,7 +7,6 @@ import java.util.Date;
 
 public abstract class Promocion {
 
-
     private boolean estado;
     private Date fechaInicio;
     private Date fechaFin;

@@ -6,15 +6,12 @@ import java.util.Map;
 public class Tarjeta {
 
     private int numero;
-
     TipoTarjeta tipoTarjeta;
-
 
     public Tarjeta(int numero, TipoTarjeta tipo) {
         this.numero = numero;
         this.tipoTarjeta = tipo;
     }
-
 
     public int getNumero() {
         return numero;
@@ -36,8 +33,6 @@ public class Tarjeta {
     public TipoTarjeta tipoTarjeta(){
         return tipoTarjeta;
     }
-
-
 
     @Override
     public String toString() {

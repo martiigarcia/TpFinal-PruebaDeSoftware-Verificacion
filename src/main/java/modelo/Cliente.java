@@ -82,15 +82,6 @@ public class Cliente {
     }
 
 
-    public List<Tarjeta> getTarjetas() {
-        return tarjetas;
-    }
-
-    public void agregarTarjeta(Tarjeta tarjeta) {
-        this.tarjetas.add(tarjeta);
-    }
-
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -114,6 +105,13 @@ public class Cliente {
        return this.tarjetas.contains(tarjeta);
     }
 
+    public List<Tarjeta> getTarjetas() {
+        return tarjetas;
+    }
+
+    public void agregarTarjeta(Tarjeta tarjeta) {
+        this.tarjetas.add(tarjeta);
+    }
 
 
     @Override
