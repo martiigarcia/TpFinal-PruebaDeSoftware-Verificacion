@@ -15,9 +15,9 @@ public class Main {
         Tarjeta tarjeta1 = new Tarjeta(1, TipoTarjeta.MERCADOPAGO);
         Tarjeta tarjeta2 = new Tarjeta(2, TipoTarjeta.UALA);
         Tarjeta tarjeta3 = new Tarjeta(3, TipoTarjeta.MERCADOPAGO);
-        cliente1.agregarTarjeta(tarjeta1);
-        cliente1.agregarTarjeta(tarjeta2);
-        cliente2.agregarTarjeta(tarjeta3);
+        cliente1.agregarUnaTarjetaALista(tarjeta1);
+        cliente1.agregarUnaTarjetaALista(tarjeta2);
+        cliente2.agregarUnaTarjetaALista(tarjeta3);
         String marca1 = "Eco";
         String marca2 = "Frutiloqui";
         Producto producto1 = new Producto("1", 34, "Manzana", "Fruta", marca1);

@@ -33,7 +33,7 @@ class ClienteTest {
     public void agregarTarjeta(){
         Cliente cliente =  new Cliente("Martina", "Garcia", "12345678", "marti@gmail.com");
         Tarjeta tarjeta = new Tarjeta(12, TipoTarjeta.MERCADOPAGO);
-        cliente.agregarTarjeta(tarjeta);
+        cliente.agregarUnaTarjetaALista(tarjeta);
         assertEquals(1, cliente.getTarjetas().size());
     }
 

@@ -1,13 +1,9 @@
 package modelo;
 
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 public class Cliente {
 
@@ -18,38 +14,31 @@ public class Cliente {
     private String email;
     private List<Tarjeta> tarjetas;
 
-
     private static final Pattern VALID_DNI_REGEX =
             Pattern.compile("^[0-9]{8,8}$", Pattern.CASE_INSENSITIVE);
 
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+
     public Cliente(String nombre, String apellido, String dni, String email) throws RuntimeException {
 
-        if (!(nombre == null || nombre.isEmpty())){
-            this.nombre = nombre;
-        }else {
+        if ((nombre == null || nombre.isEmpty()))
             throw new RuntimeException("El nombre debe ser valido");
-        }
 
-        if (!(apellido == null || apellido.isEmpty())){
-            this.apellido = apellido;
-        }else {
+        if ((apellido == null || apellido.isEmpty()))
             throw new RuntimeException("El apellido debe ser valido");
-        }
 
-        if (validarDNI(dni)){
-            this.dni = dni;
-        }else {
+        if (!validarDNI(dni))
             throw new RuntimeException("El DNI debe ser valido");
-        }
 
-        if (validarEmail(email)) {
-            this.email = email;
-        } else {
+        if (!validarEmail(email))
             throw new RuntimeException("El email debe ser valido");
-        }
+
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.email = email;
         this.tarjetas = new ArrayList<>();
     }
 
@@ -68,46 +57,44 @@ public class Cliente {
         return nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
     }
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
     public void setDni(String dni) {
+        if (!validarDNI(dni))
+            throw new RuntimeException("El DNI debe ser valido");
         this.dni = dni;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
+        if (!validarEmail(email))
+            throw new RuntimeException("El email debe ser valido");
         this.email = email;
     }
 
-    public void setTarjetas(List<Tarjeta> tarjetas) {
-        this.tarjetas = tarjetas;
-    }
-    public boolean tarjetaPropia(Tarjeta tarjeta){
-       return this.tarjetas.contains(tarjeta);
-    }
 
     public List<Tarjeta> getTarjetas() {
         return tarjetas;
     }
 
-    public void agregarTarjeta(Tarjeta tarjeta) {
+    public void agregarUnaTarjetaALista(Tarjeta tarjeta) {
         this.tarjetas.add(tarjeta);
     }
 
