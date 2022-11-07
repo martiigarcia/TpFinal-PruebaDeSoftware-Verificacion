@@ -47,7 +47,7 @@ public class Carrito {
             //compara que el nombre de la marca del producto sea igual al nombre de la marca de la promocion
 
             precio = precio + (producto.getPrecio() -
-                    (producto.getPrecio() * marcaPromocion.descuento(producto.getMarca().getNombre())));
+                    (producto.getPrecio() * marcaPromocion.descuento(producto.getMarca())));
 
         }
 

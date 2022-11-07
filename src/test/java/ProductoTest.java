@@ -28,8 +28,6 @@ public class ProductoTest {
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import modelo.Categoria;
-import modelo.Marca;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -43,10 +41,10 @@ class ProductoTest {
 
         return new Object[][]{
         //(String codigo, double precio, String descripcion, String categoria, Marca marca)
-                {"" , 1, "descripcion", "frutas",  new Marca("Frutiloqui")},    //sin descripcion
-                {"1", 1, ""            , "Frutas", new Marca("Frutiloqui")},    //sin descripcion
-                {"1", 1, "descripcion",   null  ,  new Marca("Frutiloqui")},                   //sin categoria
-                {"1", 1, "descripcion", "frutas",  null}                    //sin marca
+                {"" , 1, "descripcion", "frutas",  "Frutiloqui"},    //sin descripcion
+                {"1", 1, ""           , "Frutas",  "Frutiloqui"},    //sin descripcion
+                {"1", 1, "descripcion",   null  ,  "Frutiloqui"},    //sin categoria
+                {"1", 1, "descripcion", "frutas",      null    }     //sin marca
 
                 //como se hace para hacer la prueba de q no tenga precio o codigo?
 
@@ -55,7 +53,7 @@ class ProductoTest {
 
     @ParameterizedTest
     @MethodSource("parametros")
-    void crearProducto(String codigo, double precio, String descripcion, String categoria,  Marca marca) {
+    void crearProducto(String codigo, double precio, String descripcion, String categoria,  String marca) {
         assertThrows(RuntimeException.class, () -> new Producto(codigo, precio, descripcion, categoria,  marca));
     }
 

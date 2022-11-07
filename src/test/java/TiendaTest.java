@@ -13,7 +13,7 @@ public class TiendaTest {
     private Cliente cliente;
     private Tarjeta tarjeta;
     private Carrito carrito;
-    private Marca marcaAcme, marcaEco, marcaFrutiloqui;
+    private String marcaAcme, marcaEco, marcaFrutiloqui;
     private Producto producto1, producto2, producto3, producto4;
 
     private LocalDate  fecha2DiasAntes, fecha2DiasDesp;
@@ -28,9 +28,9 @@ public class TiendaTest {
         cliente = new Cliente("Martina", "Garcia", "12345678", "marti@gmail.com");
         tarjeta = new Tarjeta(1111, TipoTarjeta.MERCADOPAGO);
 
-        marcaAcme = new Marca("Acme");
-        marcaEco = new Marca("Eco");
-        marcaFrutiloqui = new Marca("Frutiloqui");
+        marcaAcme = "Acme";
+        marcaEco = "Eco";
+        marcaFrutiloqui = "Frutiloqui";
 
 
 
@@ -58,7 +58,7 @@ public class TiendaTest {
 
         tienda.setMarcaPromocion(new MarcaPromocion(true,
                 fecha2DiasAntes,
-                fecha2DiasDesp, 0.05, marcaAcme.getNombre()));
+                fecha2DiasDesp, 0.05, marcaAcme));
         tienda.setTarjetaPromocion(new TarjetaPromocion(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()));
@@ -77,7 +77,7 @@ public class TiendaTest {
     @Test
     public void registrarPromocionMarcaNueva() {
         tienda.setMarcaPromocion(new MarcaPromocion(true,
-                fecha2DiasAntes, fecha2DiasDesp, 0.05, marcaAcme.getNombre()));
+                fecha2DiasAntes, fecha2DiasDesp, 0.05, marcaAcme));
 
         assertEquals(1, tienda.marcaPromocionList().size());
 
@@ -95,14 +95,14 @@ public class TiendaTest {
     public void registrarPromociones(){
         tienda.setMarcaPromocion(new MarcaPromocion(true,
                 fecha2DiasAntes,
-                fecha2DiasDesp, 0.05,marcaEco.getNombre()));
+                fecha2DiasDesp, 0.05,marcaEco));
         tienda.setTarjetaPromocion(new TarjetaPromocion(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08,TipoTarjeta.UALA.getNombre()));
 
         tienda.setMarcaPromocion(new MarcaPromocion(true,
                 fecha2DiasAntes,
-                fecha2DiasDesp, 0.05,marcaAcme.getNombre()));
+                fecha2DiasDesp, 0.05,marcaAcme));
         tienda.setTarjetaPromocion(new TarjetaPromocion(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08,TipoTarjeta.MERCADOPAGO.getNombre()));
@@ -117,7 +117,7 @@ public class TiendaTest {
         //  intentar registrar promocion con una fecha de finalizacion previo al dia de hoy
 
         assertThrows(RuntimeException.class, () -> tienda.setMarcaPromocion(new MarcaPromocion(true,
-                fecha2DiasAntes, LocalDate.now().minusDays(1),0.05, marcaAcme.getNombre())));
+                fecha2DiasAntes, LocalDate.now().minusDays(1),0.05, marcaAcme)));
 
     }
 

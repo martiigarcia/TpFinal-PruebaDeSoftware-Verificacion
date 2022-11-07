@@ -7,10 +7,10 @@ public class Producto {
     private String descripcion;
     private String categoria;
     private double precio;
-    private Marca marca;
+    private String marca;
 
 
-    public Producto(String codigo, double precio, String descripcion, String categoria, Marca marca) throws RuntimeException {
+    public Producto(String codigo, double precio, String descripcion, String categoria, String marca) throws RuntimeException {
 
         if (esDatoVacio(codigo))
             throw new RuntimeException("El codigo debe ser valido");
@@ -57,7 +57,7 @@ public class Producto {
         return precio;
     }
 
-    public Marca getMarca() {
+    public String getMarca() {
         return marca;
     }
 
@@ -77,7 +77,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    public void setMarca(Marca marca) {
+    public void setMarca(String marca) {
         this.marca = marca;
     }
 

@@ -18,8 +18,8 @@ public class Main {
         cliente1.agregarTarjeta(tarjeta1);
         cliente1.agregarTarjeta(tarjeta2);
         cliente2.agregarTarjeta(tarjeta3);
-        Marca marca1 = new Marca("Eco");
-        Marca marca2 = new Marca("Frutiloqui");
+        String marca1 = "Eco";
+        String marca2 = "Frutiloqui";
         Producto producto1 = new Producto("1", 34, "Manzana", "Fruta", marca1);
         Producto producto2 = new Producto("1", 6, "Pera", "Fruta", marca2);
         Carrito carrito1 = new Carrito();
@@ -30,7 +30,7 @@ public class Main {
         Tienda tienda = new Tienda();
         tienda.setMarcaPromocion(new MarcaPromocion(true,
                 fecha2DiasAntes,
-                fecha2DiasDesp, 0.05, marca1.getNombre()));
+                fecha2DiasDesp, 0.05, marca1));
         tienda.setTarjetaPromocion(new TarjetaPromocion(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()));

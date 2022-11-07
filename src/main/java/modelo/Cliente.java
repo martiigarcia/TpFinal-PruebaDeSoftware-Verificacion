@@ -19,23 +19,6 @@ public class Cliente {
     private List<Tarjeta> tarjetas;
 
 
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     private static final Pattern VALID_DNI_REGEX =
             Pattern.compile("^[0-9]{8,8}$", Pattern.CASE_INSENSITIVE);
 
@@ -81,6 +64,21 @@ public class Cliente {
         return matcher.find();
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
