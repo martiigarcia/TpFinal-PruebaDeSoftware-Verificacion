@@ -15,16 +15,15 @@ public class ProductoVendido {
         return codigo;
     }
 
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
     public double getPrecioPago() {
         return precioPago;
     }
 
     public void setPrecioPago(double precioPago) {
         this.precioPago = precioPago;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     @Override

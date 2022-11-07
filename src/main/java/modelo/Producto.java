@@ -12,34 +12,25 @@ public class Producto {
 
     public Producto(String codigo, double precio, String descripcion, String categoria, String marca) throws RuntimeException {
 
-        if (esDatoVacio(codigo))
+        if (codigo == null || codigo.isEmpty())
             throw new RuntimeException("El codigo debe ser valido");
-        this.codigo = codigo;
 
         if (descripcion == null || descripcion.isEmpty())
-            throw new RuntimeException("La descripcion debe ser valido");
+            throw new RuntimeException("La descripcion debe ser valida");
+
+        if (categoria == null || categoria.isEmpty())
+            throw new RuntimeException("La categoria debe ser valida");
+
+        if (marca == null || marca.isEmpty())
+            throw new RuntimeException("La marca debe ser valida");
+
+        this.codigo = codigo;
         this.descripcion = descripcion;
-
-        if (esDatoVacio(String.valueOf(precio)))
-            throw new RuntimeException("El precio debe ser valido");
         this.precio = precio;
-
-        if (esDatoNulo(categoria))
-            throw new RuntimeException("La categoria debe ser valido");
         this.categoria = categoria;
-
-        if (esDatoNulo(marca))
-            throw new RuntimeException("La marca debe ser valido");
         this.marca = marca;
     }
 
-    private boolean esDatoVacio(String dato) {
-        return dato.equals("");
-    }
-
-    private boolean esDatoNulo(Object dato) {
-        return dato == null;
-    }
 
     public String getCodigo() {
         return codigo;

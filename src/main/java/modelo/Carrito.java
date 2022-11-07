@@ -52,7 +52,7 @@ public class Carrito {
         }
 
         //compara el STRING tipo de tarjeta con la tarjeta de la promocion
-        precio = precio - (precio * tarjetaPromocion.descuento(tarjeta.tipoTarjeta().getNombre()));
+        precio = precio - (precio * tarjetaPromocion.descuento(tarjeta.getTipoTarjeta().getNombre()));
 
 
         return precio;
