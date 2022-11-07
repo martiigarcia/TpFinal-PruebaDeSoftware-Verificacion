@@ -67,7 +67,7 @@ public class TiendaTest {
         tienda.agregarVenta(carrito.pagar(cliente,
                 tienda.MarcaPromocionVigente(), tienda.TarjetaPromocionVigente(), tarjeta));
 
-        assertEquals(1, tienda.verVentasRealizadas().size());
+        assertEquals(1, tienda.getVentaList().size());
 
 
     }
@@ -79,7 +79,7 @@ public class TiendaTest {
         tienda.setMarcaPromocion(new MarcaPromocion(true,
                 fecha2DiasAntes, fecha2DiasDesp, 0.05, marcaAcme));
 
-        assertEquals(1, tienda.marcaPromocionList().size());
+        assertEquals(1, tienda.getMarcaPromociones().size());
 
     }
 
@@ -88,7 +88,7 @@ public class TiendaTest {
         tienda.setTarjetaPromocion(new TarjetaPromocion(true,
                 fecha2DiasAntes, fecha2DiasDesp, 0.08,TipoTarjeta.MERCADOPAGO.getNombre()));
 
-        assertEquals(1, tienda.tarjetaPromocionList().size());
+        assertEquals(1, tienda.getTarjetaPromociones().size());
     }
 
     @Test
@@ -107,8 +107,8 @@ public class TiendaTest {
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08,TipoTarjeta.MERCADOPAGO.getNombre()));
 
-        assertEquals(2, tienda.marcaPromocionList().size());
-        assertEquals(2, tienda.tarjetaPromocionList().size());
+        assertEquals(2, tienda.getMarcaPromociones().size());
+        assertEquals(2, tienda.getTarjetaPromociones().size());
     }
 
     //REGISTRO DE PROMOCION INVALIDAS

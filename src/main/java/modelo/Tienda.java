@@ -49,9 +49,6 @@ public class Tienda {
         this.ventaList.add(venta);
     }
 
-    public List<Venta> verVentasRealizadas() {
-        return ventaList;
-    }
 
 
     //para actulizar las promociones
@@ -104,13 +101,7 @@ public class Tienda {
         return this.tarjetaPromociones.get(tarjetaPromociones.size() - 1);
     }
 
-    public List<Promocion> marcaPromocionList() {
-        return marcaPromociones;
-    }
 
-    public List<Promocion> tarjetaPromocionList() {
-        return tarjetaPromociones;
-    }
 
 
 

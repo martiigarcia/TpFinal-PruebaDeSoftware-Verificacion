@@ -47,7 +47,7 @@ public class Main {
         double precio = carrito1.calcularMontoCarrito(tienda.MarcaPromocionVigente(), tienda.TarjetaPromocionVigente(), cliente1.getTarjetas().get(opcion));
         // System.out.println("Precio calculado con promociones de marca y tarjeta: " + precio);
         tienda.agregarVenta(carrito1.pagar(cliente1, tienda.MarcaPromocionVigente(), tienda.TarjetaPromocionVigente(), cliente1.getTarjetas().get(opcion)));
-        tienda.verVentasRealizadas().forEach(venta -> System.out.println(venta.toString()));
+        tienda.getVentaList().forEach(venta -> System.out.println(venta.toString()));
         //System.out.println(tienda.verVentasRealizadas());
         //probar agregar promocion nueva a las listas de promociones
        /* tienda.setMarcaPromocion(

@@ -7,13 +7,12 @@ public class Carrito {
 
     private List<Producto> productos;
 
-    public List<Producto> productos() {
-        return productos;
-    }
-
     public Carrito() {
         this.productos = new ArrayList<>();
-        //    this.cliente = cliente;
+    }
+
+    public List<Producto> productos() {
+        return productos;
     }
 
     public void agregarProductoAlCarrito(Producto producto) throws RuntimeException {
@@ -26,7 +25,6 @@ public class Carrito {
     }
 
     public double calcularMontoCarrito(Promocion marcaPromocion, Promocion tarjetaPromocion, Tarjeta tarjeta) throws RuntimeException {
-
 
         if (tarjeta == null)
             throw new RuntimeException("La tarjeta para calcular el monto no puede ser vacia.");
@@ -41,22 +39,14 @@ public class Carrito {
         double precio = 0;
         for (Producto producto : this.productos) {
 
-            //TOODO ESTO SE PUEDE MEJORAR HACIENDO LA COMPARACION
-            // DE AMBOS IFS ADENTRO DE LAS PROMOCIONES
-
-            //compara que el nombre de la marca del producto sea igual al nombre de la marca de la promocion
-
             precio = precio + (producto.getPrecio() -
                     (producto.getPrecio() * marcaPromocion.descuento(producto.getMarca())));
 
         }
 
-        //compara el STRING tipo de tarjeta con la tarjeta de la promocion
         precio = precio - (precio * tarjetaPromocion.descuento(tarjeta.getTipoTarjeta().getNombre()));
 
-
         return precio;
-
     }
 
     public Venta pagar(Cliente cliente, Promocion marcaPromocion, Promocion tarjetaPromocion, Tarjeta tarjeta) throws RuntimeException {
@@ -64,7 +54,7 @@ public class Carrito {
         if (productos == null)
             throw new RuntimeException("Debe existir como minimo un producto en el carrito.");
 
-        if (tarjeta != null) { //deberia ser la validacion del servicio
+        if (tarjeta != null) {
             return new Venta(cliente, tarjeta, productos, calcularMontoCarrito(marcaPromocion, tarjetaPromocion, tarjeta));
         }
         return new Venta(cliente, tarjeta, productos, 0);

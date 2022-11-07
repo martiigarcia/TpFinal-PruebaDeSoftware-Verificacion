@@ -21,6 +21,13 @@ public class Venta {
         this.montoAbonado = montoAbonado;
     }
 
+    private void agregarProductos(List<Producto> productos) {
+        productos.forEach(producto ->
+                this.productosVendidos.add(
+                        new ProductoVendido(producto.getCodigo(), producto.getPrecio()
+                        )));
+
+    }
 
     public Cliente getCliente() {
         return cliente;
@@ -55,16 +62,6 @@ public class Venta {
         this.montoAbonado = montoAbonado;
     }
 
-
-
-
-    private void agregarProductos(List<Producto> productos) {
-        productos.forEach(producto ->
-                this.productosVendidos.add(
-                        new ProductoVendido(producto.getCodigo(), producto.getPrecio()
-                        )));
-
-    }
 
     /*
        @Override
