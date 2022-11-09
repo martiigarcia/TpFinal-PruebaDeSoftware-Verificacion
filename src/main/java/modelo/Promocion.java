@@ -14,15 +14,20 @@ public abstract class Promocion {
 
 
     public Promocion(boolean estado, LocalDate fechaInicio, LocalDate fechaFin, double descuento) throws RuntimeException {
+
+        if (!this.validarFecha(fechaInicio, fechaFin))
+            throw new RuntimeException("Las fechas de la promocion no son validas.");
+
         this.estado = estado;
         this.descuento = descuento;
-        if (this.validarFecha(fechaInicio, fechaFin)) {
-            this.fechaInicio = Date.from(fechaInicio.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            this.fechaFin = Date.from(fechaFin.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        } else {
-            throw new RuntimeException("Las fechas de la promocion no son validas.");
-        }
+        this.fechaInicio = Date.from(fechaInicio.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        this.fechaFin = Date.from(fechaFin.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
+    }
+
+    private boolean validarFecha(LocalDate fechaInicio, LocalDate fechaFin) {
+        LocalDate hoy = LocalDate.now();
+        return (fechaInicio.isBefore(fechaFin) && hoy.isBefore(fechaFin));
     }
 
     public boolean isEstado() {
@@ -33,17 +38,10 @@ public abstract class Promocion {
         this.estado = estado;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
-        return fechaFin;
-    }
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
@@ -65,19 +63,16 @@ public abstract class Promocion {
 
     public abstract double descuento(String tipo);
 
-    public LocalDate fechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    public LocalDate fechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    private boolean validarFecha(LocalDate fechaInicio, LocalDate fechaFin) {
-        LocalDate hoy = LocalDate.now();
-        return (fechaInicio.isBefore(fechaFin) && hoy.isBefore(fechaFin));
-    }
 
+    //para hacer la validacion en la Tienda:
     public boolean fechaValida() {
         LocalDate hoy = LocalDate.now();
         LocalDate inicio = this.fechaInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

@@ -26,12 +26,11 @@ public class Carrito {
 
     public double calcularMontoCarrito(Promocion marcaPromocion, Promocion tarjetaPromocion, Tarjeta tarjeta) throws RuntimeException {
 
-        if (tarjeta == null)
-            throw new RuntimeException("La tarjeta para calcular el monto no puede ser vacia.");
-
-        if (productos == null)
+        if (this.productos == null)
             throw new RuntimeException("Debe existir como minimo un producto en el carrito.");
 
+        if (tarjeta == null)
+            throw new RuntimeException("La tarjeta para calcular el monto no puede ser vacia.");
 
         if (marcaPromocion == null || tarjetaPromocion == null)
             throw new RuntimeException("Las promociones no pueden ser vacias.");
@@ -51,13 +50,13 @@ public class Carrito {
 
     public Venta pagar(Cliente cliente, Promocion marcaPromocion, Promocion tarjetaPromocion, Tarjeta tarjeta) throws RuntimeException {
 
-        if (productos == null)
+        if (this.productos == null)
             throw new RuntimeException("Debe existir como minimo un producto en el carrito.");
 
-        if (tarjeta != null) {
-            return new Venta(cliente, tarjeta, productos, calcularMontoCarrito(marcaPromocion, tarjetaPromocion, tarjeta));
-        }
-        return new Venta(cliente, tarjeta, productos, 0);
+        if (tarjeta == null)
+            throw new RuntimeException("Debe ingresar una tarjeta para concretar la venta en el carrito.");
+
+        return new Venta(cliente, tarjeta, productos, calcularMontoCarrito(marcaPromocion, tarjetaPromocion, tarjeta));
     }
 
    /* @Override

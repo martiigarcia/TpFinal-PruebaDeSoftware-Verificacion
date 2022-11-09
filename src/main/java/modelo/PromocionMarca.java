@@ -1,14 +1,13 @@
 package modelo;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
-public class MarcaPromocion extends Promocion {
+public class PromocionMarca extends Promocion {
 
     private String marca;
 
 
-    public MarcaPromocion(boolean estado, LocalDate fechaInicio, LocalDate fechaFin, double porcentaje, String marca) throws RuntimeException {
+    public PromocionMarca(boolean estado, LocalDate fechaInicio, LocalDate fechaFin, double porcentaje, String marca) throws RuntimeException {
         super(estado, fechaInicio, fechaFin, porcentaje);
         this.marca = marca;
     }
@@ -23,13 +22,13 @@ public class MarcaPromocion extends Promocion {
 
 
     @Override
-    public double descuento(String tipo) {
+    public double descuento(String nombre) {
         LocalDate hoy = LocalDate.now();
 
-        if (!this.marca.equals(tipo))
+        if (!this.marca.equals(nombre))
             return 0;
 
-        if (hoy.isAfter(this.fechaFin()) || hoy.isBefore(this.fechaInicio())) {
+        if (hoy.isAfter(this.getFechaFin()) || hoy.isBefore(this.getFechaInicio())) {
             return 0;
         }
         return super.getDescuento();
@@ -39,6 +38,6 @@ public class MarcaPromocion extends Promocion {
 
     @Override
     public String toString() {
-        return "MarcaPromocion{ " + marca + " }";
+        return (super.toString() + "MarcaPromocion{ " + marca + " }");
     }
 }

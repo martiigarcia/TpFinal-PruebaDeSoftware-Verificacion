@@ -28,10 +28,10 @@ public class Main {
         carrito1.agregarProductoAlCarrito(producto2);
         carrito2.agregarProductoAlCarrito(producto2);
         Tienda tienda = new Tienda();
-        tienda.setMarcaPromocion(new MarcaPromocion(true,
+        tienda.setPromocionMarca(new PromocionMarca(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.05, marca1));
-        tienda.setTarjetaPromocion(new TarjetaPromocion(true,
+        tienda.setPromocionTarjeta(new PromocionTarjeta(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()));
         Scanner lectura = new Scanner(System.in);
@@ -44,9 +44,9 @@ public class Main {
         System.out.println("Elegir tarjeta: ");
         int opcion = lectura.nextInt();
         //   System.out.println("Opcion elegida: " + opcion + " - Numero de tarjeta: " + cliente1.getTarjetas().get(opcion).getNumero());
-        double precio = carrito1.calcularMontoCarrito(tienda.MarcaPromocionVigente(), tienda.TarjetaPromocionVigente(), cliente1.getTarjetas().get(opcion));
+        double precio = carrito1.calcularMontoCarrito(tienda.PromocionMarcaVigente(), tienda.PromocionTarjetaVigente(), cliente1.getTarjetas().get(opcion));
         // System.out.println("Precio calculado con promociones de marca y tarjeta: " + precio);
-        tienda.agregarVenta(carrito1.pagar(cliente1, tienda.MarcaPromocionVigente(), tienda.TarjetaPromocionVigente(), cliente1.getTarjetas().get(opcion)));
+        tienda.agregarVenta(carrito1.pagar(cliente1, tienda.PromocionMarcaVigente(), tienda.PromocionTarjetaVigente(), cliente1.getTarjetas().get(opcion)));
         tienda.getVentaList().forEach(venta -> System.out.println(venta.toString()));
         //System.out.println(tienda.verVentasRealizadas());
         //probar agregar promocion nueva a las listas de promociones

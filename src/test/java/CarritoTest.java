@@ -58,9 +58,9 @@ public class CarritoTest {
         carrito.agregarProductoAlCarrito(producto1);
         carrito.agregarProductoAlCarrito(producto2);
         assertEquals(190, carrito.calcularMontoCarrito(
-                new MarcaPromocion(true,
+                new PromocionMarca(true,
                         fecha2DiasAntes, fecha2DiasDesp,0.05, marcaAcme),
-                new TarjetaPromocion(true,
+                new PromocionTarjeta(true,
                         fecha2DiasAntes, fecha2DiasDesp, 0.08, TipoTarjeta.UALA.getNombre()),
                 tarjeta //tarjeta de mp
         ));
@@ -73,9 +73,9 @@ public class CarritoTest {
         carrito.agregarProductoAlCarrito(producto3);
         carrito.agregarProductoAlCarrito(producto4);
         assertEquals(36.8, carrito.calcularMontoCarrito(
-                new MarcaPromocion(true,
+                new PromocionMarca(true,
                         fecha2DiasAntes, fecha2DiasDesp, 0.05,marcaAcme),
-                new TarjetaPromocion(true,
+                new PromocionTarjeta(true,
                         fecha2DiasAntes, fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()),
                 tarjeta //tarjeta de mp
         ));
@@ -89,9 +89,9 @@ public class CarritoTest {
         carrito.agregarProductoAlCarrito(producto1);
         carrito.agregarProductoAlCarrito(producto2);
         assertEquals(174.8, carrito.calcularMontoCarrito(
-                new MarcaPromocion(true,
+                new PromocionMarca(true,
                         fecha2DiasAntes, fecha2DiasDesp, 0.05,marcaAcme),
-                new TarjetaPromocion(true,
+                new PromocionTarjeta(true,
                         fecha2DiasAntes, fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()),
                 tarjeta //tarjeta de mp
         ));
@@ -105,9 +105,9 @@ public class CarritoTest {
         carrito.agregarProductoAlCarrito(producto1);
         carrito.agregarProductoAlCarrito(producto2);
         assertThrows(RuntimeException.class, () -> carrito.calcularMontoCarrito(
-                new MarcaPromocion(true,
+                new PromocionMarca(true,
                         fecha2DiasAntes, LocalDate.now().minusDays(1),0.05, marcaAcme),
-                new TarjetaPromocion(true,
+                new PromocionTarjeta(true,
                         fecha2DiasAntes, LocalDate.now().minusDays(1), 0.08, TipoTarjeta.MERCADOPAGO.getNombre()),
                 tarjeta //tarjeta de mp
         ));
@@ -118,24 +118,24 @@ public class CarritoTest {
         // aca registrar la venta desde el pagar del carrito
 
         assertEquals(Venta.class, carrito.pagar(cliente,
-                new MarcaPromocion(true,
+                new PromocionMarca(true,
                         fecha2DiasAntes, fecha2DiasDesp, 0.05,marcaAcme),
-                new TarjetaPromocion(true,
+                new PromocionTarjeta(true,
                         fecha2DiasAntes, fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()),
                 tarjeta).getClass());
 
     }
 
     @Test
-    public void pagarYRegistrarVentaSinTarjetaValida(){
+    public void pagarYNoRegistrarVentaConTarjetaNull(){
         // aca registrar la venta desde el pagar del carrito
 
-        assertEquals(Venta.class, carrito.pagar(cliente,
-                new MarcaPromocion(true,
+        assertThrows(RuntimeException.class, () -> carrito.pagar(cliente,
+                new PromocionMarca(true,
                         fecha2DiasAntes, fecha2DiasDesp,0.05, marcaAcme),
-                new TarjetaPromocion(true,
+                new PromocionTarjeta(true,
                         fecha2DiasAntes, fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()),
-                null).getClass());
+                null));
 
     }
 

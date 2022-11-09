@@ -56,16 +56,16 @@ public class TiendaTest {
     public void registrarVenta() {
         // aca registrar venta en la tienda
 
-        tienda.setMarcaPromocion(new MarcaPromocion(true,
+        tienda.setPromocionMarca(new PromocionMarca(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.05, marcaAcme));
-        tienda.setTarjetaPromocion(new TarjetaPromocion(true,
+        tienda.setPromocionTarjeta(new PromocionTarjeta(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08, TipoTarjeta.MERCADOPAGO.getNombre()));
 
 
         tienda.agregarVenta(carrito.pagar(cliente,
-                tienda.MarcaPromocionVigente(), tienda.TarjetaPromocionVigente(), tarjeta));
+                tienda.PromocionMarcaVigente(), tienda.PromocionTarjetaVigente(), tarjeta));
 
         assertEquals(1, tienda.getVentaList().size());
 
@@ -76,39 +76,39 @@ public class TiendaTest {
 
     @Test
     public void registrarPromocionMarcaNueva() {
-        tienda.setMarcaPromocion(new MarcaPromocion(true,
+        tienda.setPromocionMarca(new PromocionMarca(true,
                 fecha2DiasAntes, fecha2DiasDesp, 0.05, marcaAcme));
 
-        assertEquals(1, tienda.getMarcaPromociones().size());
+        assertEquals(1, tienda.getPromocionesMarca().size());
 
     }
 
     @Test
     public void registrarPromocionTarjetaNueva() {
-        tienda.setTarjetaPromocion(new TarjetaPromocion(true,
+        tienda.setPromocionTarjeta(new PromocionTarjeta(true,
                 fecha2DiasAntes, fecha2DiasDesp, 0.08,TipoTarjeta.MERCADOPAGO.getNombre()));
 
-        assertEquals(1, tienda.getTarjetaPromociones().size());
+        assertEquals(1, tienda.getPromocionesTarjeta().size());
     }
 
     @Test
     public void registrarPromociones(){
-        tienda.setMarcaPromocion(new MarcaPromocion(true,
+        tienda.setPromocionMarca(new PromocionMarca(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.05,marcaEco));
-        tienda.setTarjetaPromocion(new TarjetaPromocion(true,
+        tienda.setPromocionTarjeta(new PromocionTarjeta(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08,TipoTarjeta.UALA.getNombre()));
 
-        tienda.setMarcaPromocion(new MarcaPromocion(true,
+        tienda.setPromocionMarca(new PromocionMarca(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.05,marcaAcme));
-        tienda.setTarjetaPromocion(new TarjetaPromocion(true,
+        tienda.setPromocionTarjeta(new PromocionTarjeta(true,
                 fecha2DiasAntes,
                 fecha2DiasDesp, 0.08,TipoTarjeta.MERCADOPAGO.getNombre()));
 
-        assertEquals(2, tienda.getMarcaPromociones().size());
-        assertEquals(2, tienda.getTarjetaPromociones().size());
+        assertEquals(2, tienda.getPromocionesMarca().size());
+        assertEquals(2, tienda.getPromocionesTarjeta().size());
     }
 
     //REGISTRO DE PROMOCION INVALIDAS
@@ -116,7 +116,7 @@ public class TiendaTest {
     public void registrarPromocionMarcaNuevaConFechaInvalida() {
         //  intentar registrar promocion con una fecha de finalizacion previo al dia de hoy
 
-        assertThrows(RuntimeException.class, () -> tienda.setMarcaPromocion(new MarcaPromocion(true,
+        assertThrows(RuntimeException.class, () -> tienda.setPromocionMarca(new PromocionMarca(true,
                 fecha2DiasAntes, LocalDate.now().minusDays(1),0.05, marcaAcme)));
 
     }
@@ -125,7 +125,7 @@ public class TiendaTest {
     public void registrarPromocionTarjetaNuevaConFechaInvalida() {
         //  intentar registrar promocion con una fecha de finalizacion previo al dia de hoy
 
-        assertThrows(RuntimeException.class, () -> tienda.setTarjetaPromocion(new TarjetaPromocion(true,
+        assertThrows(RuntimeException.class, () -> tienda.setPromocionTarjeta(new PromocionTarjeta(true,
                 fecha2DiasAntes, LocalDate.now().minusDays(1), 0.08,TipoTarjeta.MERCADOPAGO.getNombre())));
 
     }
@@ -134,7 +134,7 @@ public class TiendaTest {
     public void registrarPromocionTarjetaNuevaConFechasInvertidas() {
         //  intentar registrar promocion con una fecha de finalizacion previo al dia de hoy
 
-        assertThrows(RuntimeException.class, () -> tienda.setTarjetaPromocion(new TarjetaPromocion(true,
+        assertThrows(RuntimeException.class, () -> tienda.setPromocionTarjeta(new PromocionTarjeta(true,
                 fecha2DiasDesp, fecha2DiasAntes,0.08, TipoTarjeta.MERCADOPAGO.getNombre())));
 
     }
@@ -143,7 +143,7 @@ public class TiendaTest {
     public void registrarPromocionMarcaNuevaVacia() {
         //  intentar registrar promocion con una fecha de finalizacion previo al dia de hoy
 
-        assertThrows(RuntimeException.class, () -> tienda.setMarcaPromocion(null));
+        assertThrows(RuntimeException.class, () -> tienda.setPromocionMarca(null));
 
     }
 
@@ -151,7 +151,7 @@ public class TiendaTest {
     public void registrarPromocionTarjetaNuevaVacia() {
         //  intentar registrar promocion con una fecha de finalizacion previo al dia de hoy
 
-        assertThrows(RuntimeException.class, () -> tienda.setTarjetaPromocion(null));
+        assertThrows(RuntimeException.class, () -> tienda.setPromocionTarjeta(null));
 
     }
 
